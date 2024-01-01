@@ -1,10 +1,14 @@
 let ul = document.querySelector('ul');
 let input = document.querySelector('#task');
 let addBtn = document.querySelector('#add');
-
+let resetBtn = document.querySelector('#resetBtn');
 let i = 0;
 let list = document.querySelectorAll('ul li');
 get();
+resetBtn.addEventListener('click', () =>{
+    ul.innerHTML = "";
+    save();
+})
 addBtn.addEventListener('click', () => {
     if (input.value == "") {
         alert("Please Enter a Task First");
@@ -22,7 +26,7 @@ addBtn.addEventListener('click', () => {
         ul.appendChild(li);
         list = document.querySelectorAll('ul li');
         input.value = '';
-       
+      
         li.onclick= function (event) {
 
             if (event.target == span) {
@@ -53,13 +57,13 @@ function save(){
  
 }
 function get(){
-    console.log("Callign get");
+   
     ul.innerHTML = localStorage.getItem('uli');
     let listItem = document.querySelectorAll('ul li');
-    console.log(listItem);
+   
     for(list of listItem){
         list.onclick= function (event) {
-            console.dir(event);
+            
             if (event.target.nodeName == "SPAN") {
       
                 ul.removeChild(this);
